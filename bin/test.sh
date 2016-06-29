@@ -12,7 +12,7 @@ fi
 
 i=0
 tests=()
-for file in $(find ./src/test/java -name "*Test.java" | sort)
+for file in $(find . -name "*Test.java" | sort)
 do
   if [ $(($i % ${NODE_TOTAL})) -eq ${NODE_INDEX} ]
   then
@@ -27,5 +27,5 @@ done
 #mvn -Dtest=${tests} test jacoco:report coveralls:report
 
 #mvn test
-mvn  -Dtest=${tests} test 
+mvn   --fail-at-end -Dtest=${tests} test 
 #mvn  -Dtest=${tests} test jacoco:report coveralls:report
